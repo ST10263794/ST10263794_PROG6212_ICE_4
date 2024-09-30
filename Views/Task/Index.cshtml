@@ -1,0 +1,30 @@
+﻿@model List<TaskManagementApp.Models.TaskModel>
+
+<h1>Task List</h1>
+
+<a href="/Task/Create">Create New Task</a>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Deadline</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var task in Model)
+        {
+            <tr>
+                <td>@task.Title</td>
+                <td>@task.Description</td>
+                <td>@task.Deadline.ToShortDateString()</td>
+                <td>
+                    <a href="/Task/Edit/@task.Id">Edit</a> |
+                    <a href="/Task/Delete/@task.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
